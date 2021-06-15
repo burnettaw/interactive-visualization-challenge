@@ -1,29 +1,66 @@
-d3.json("samples.json".then(function(data){
-    var panelBody = d3.select("panel-body").append("row")
-        .attr("width", 500)
-        .attr("height", 500)
-    console.log(data)
-    panelBody.selectAll("row")
-        .data(data)
-        .enter()
-            .append("text")
-            .text(function (d) {
-                return d.name;
-
-            })
+function initdropdown(){
 
 
+    d3.json("data/samples.json").then(function(data){
+        
+        console.log(data)
+        var names = data.names;
+        var display = d3.select("#selDataset");
+        names.forEach((sample) => {
 
+            display.append("option").text(sample).property("value", sample);
+            
+        } )
+    var id = names[0];
+    metadata(id);
+    createChart(id);
+    })
+
+}
+
+initdropdown();
+
+function metadata(sampleid){
+
+    d3.json("data/samples.json").then(function(data){
+       
+        console.log(data)
+        var metadata = data.metadata;
+        var filterdata = metadata.filter(row => row.id == sampleid);
+
+    var result = filterdata[0];
+    var display = d3.select("#sample-metadata");
+    display.html("");
+    Object.entries(result).forEach(([key, value]) => {
+        display.append("h5").text(`${key}: ${value}`);
+    })
 })
+}
 
-// // Load data from miles-walked-this-month.csv
-// d3.csv("miles-walked-this-month.csv").then(function(milesData) {
+function optionChanged(id){
 
-//     // Print the milesData
-//     console.log(milesData);
-  
-//     // Format the date and cast the miles value to a number
-//     milesData.forEach(function(data) {
-//       data.date = parseTime(data.date);
-//       data.miles = +data.miles;
-//     });
+    metadata(id);
+    createChart(id);
+}
+   
+
+function createChart(sampleid){
+    d3.json("data/samples.json").then(function(data){
+       
+        console.log(data)
+        var samples = data.samples;
+        var filterdata = samples.filter(row => row.id == sampleid);
+
+    
+        var data = [{
+            x:sample_values.slice(0, 10).reverse(), 
+            y:otuid.slice(0, 10).reverse(),
+            type:"bar",
+            orientation:"h"
+        }];
+    Plotly.newPlot("bar", data);
+    })
+}
+
+
+
