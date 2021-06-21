@@ -47,9 +47,7 @@ function initdropdown(){
         var names = data.names;
         var display = d3.select("#selDataset");
         names.forEach((sample) => {
-
             display.append("option").text(sample).property("value", sample);
-            
         })//end forEach
         var id = names[0];
         metadata(id);
@@ -73,7 +71,7 @@ var margin = {
     right: 40,
     bottom: 60,
     left: 100
-}
+};
 
 function createBubbles(sampleid){
     var svg2 = d3.select("#bubble")
@@ -88,11 +86,12 @@ function createBubbles(sampleid){
     d3.json("data/samples.json").then(function(data){
     
         console.log(data)
-       // var samples = data.samples;
-        var filterdata = data.filter(row => row.id == sampleid);
-        console.log(filterdata)
+        var samples = data.samples;
         
-    var circleData = svg2.selectAll(".bubble")
+       // var filterdata = data.filter(row => row.id == sampleid);
+       // console.log(filterdata)
+        
+    var circleData = svg2.selectAll("#bubble")
         .data(samples)
         .enter()
         .append("circle")
