@@ -91,8 +91,8 @@ Create a bubble scatter chart
        // var otu_labels = filterdata[0].otu_labels;
         var otu_labels = result.otu_labels;
        // var filterdata_otu_labels = samples.filter(row => row.id == sampleid);
-        console.log("otu_labels");
-        console.log(otu_labels);
+        //console.log("otu_labels");
+        //console.log(otu_labels);
         marker_sizes = sample_values.slice(0, 10).reverse();
         var data = [{
             y:sample_values.slice(0, 10).reverse(), 
@@ -112,9 +112,9 @@ Create a bubble scatter chart
         }];
 
         var layout = {
-            title: "Belly Button Biodiversity",
-            yaxis: { title: "Sample Values" },
-            xaxis: { title: "OTU" }
+            title: "<b>Belly Button Biodiversity<b>",
+            yaxis: { title: "<b>Sample Values<b>" },
+            xaxis: { title: "<b>OTU<b>" }
         };
         Plotly.newPlot("bubble", data, layout);
     })
