@@ -83,8 +83,8 @@ Create a bubble scatter chart
         var samples = data.samples;
         var filterdata = samples.filter(row => row.id == sampleid);
         var result = filterdata[0];
-        console.log("result otu labels");
-        console.log(result.otu_labels);
+        //console.log("result otu labels");
+        //console.log(result.otu_labels);
        // console.log(filterdata[0].otu_labels);
         var sample_values = result.sample_values;
         var otu_ids = result.otu_ids;
@@ -103,9 +103,7 @@ Create a bubble scatter chart
                 color: ['rgb(93, 164, 214)', 'rgb(255, 144, 14)',  'rgb(44, 160, 101)', 'rgb(255, 65, 54)'],
                 size: marker_sizes
             },
-            //text: ['A<br>size: 40', 'B<br>size: 60', 'C<br>size: 80', 'D<br>size: 100'],
-            //text: otu_labels,
-           text:otu_ids.slice(0, 10).map(otu_ids => `OTU${otu_ids}`).reverse(),
+            text:otu_ids.slice(0, 10).map(otu_ids => `OTU${otu_ids}`).reverse(),
             //type:"bubble",
             //orientation:"h",
             //ylabels: otu_ids,
@@ -152,12 +150,9 @@ function gauge(sampleid){
         var wfreq = result.wfreq;
         var data = [{
             
-         // domain:{x:[0,1], y:[0,1],
           type: "indicator",
           mode: "gauge",
           value: wfreq,
-          //title: { text: "Speed", font: { size: 24 } },
-          //delta: { reference: 400, increasing: { color: "RebeccaPurple" } },
           gauge: {
             axis: { range: [null, 9], tickwidth: 1, tickcolor: "darkblue" },
             bar: { color: "darkblue" },
@@ -174,7 +169,7 @@ function gauge(sampleid){
               { range: [6, 7], color: "rgba(0,128,128,.30)" },
               { range: [7, 8], color: "rgba(0,128,128,.35)" },
               { range: [8, 9], color: "rgba(0,128,128,.40)" }
-            ],//steps
+            ],//end steps
             threshold: {
               line: { color: "red", width: 4 },
               thickness: 0.75,
@@ -187,7 +182,6 @@ function gauge(sampleid){
         width: 500,
         height: 500,
         margin: { t: 0, r: 0, l: 0, b: 0 },
-        // paper_bgcolor: "lavender",
         font: { color: "darkblue", family: "Arial" }
       };
       
