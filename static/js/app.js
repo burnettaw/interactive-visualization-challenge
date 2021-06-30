@@ -96,6 +96,7 @@ Create a bubble scatter chart
         marker_sizes = sample_values.slice(0, 10).reverse();
         var data = [{
             y:sample_values.slice(0, 10).reverse(), 
+            //x:otu_ids.slice(0, 10).map(otu_ids => `OTU${otu_ids}`).reverse(),
             x:otu_ids.slice(0, 10).reverse(),
             mode: 'markers',
             marker: {
@@ -103,8 +104,8 @@ Create a bubble scatter chart
                 size: marker_sizes
             },
             //text: ['A<br>size: 40', 'B<br>size: 60', 'C<br>size: 80', 'D<br>size: 100'],
-            text: otu_labels,
-           
+            //text: otu_labels,
+           text:otu_ids.slice(0, 10).map(otu_ids => `OTU${otu_ids}`).reverse(),
             //type:"bubble",
             //orientation:"h",
             //ylabels: otu_ids,
