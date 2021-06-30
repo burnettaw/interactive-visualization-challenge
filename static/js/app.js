@@ -111,7 +111,7 @@ Create a bubble scatter chart
         }];
 
         var layout = {
-            title: "<b>Belly Button Biodiversity<b>",
+            title: "<b>Bacteria Culture Per Sample<b>",
             yaxis: { title: "<b>Sample Values<b>" },
             xaxis: { title: "<b>OTU<b>" }
         };
@@ -178,13 +178,14 @@ function gauge(sampleid){
       
       var layout = {
        // title: "Bellybutton Wash Frequency",//
-        title: { text: "Bellybutton Wash Frequency", font: { size: 24 } },
        // yaxis: { title: "<b>Sample Values<b>" },
         //xaxis: { title: "<b>OTU<b>" },
         width: 500,
-        height: 500,
+        height: 400,
         margin: { t: 0, r: 0, l: 0, b: 0 },
-        font: { color: "darkblue", family: "Arial" }
+        font: { color: "darkblue", family: "Arial" },
+        title: { text: "Bellybutton Wash Frequency", font: { size: 24 }}
+      
       };
       
       Plotly.newPlot('gauge', data, layout);
