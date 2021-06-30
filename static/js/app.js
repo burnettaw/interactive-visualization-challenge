@@ -103,10 +103,6 @@ Create a bubble scatter chart
                 size: marker_sizes
             },
             text:otu_ids.slice(0, 10).map(otu_ids => `OTU${otu_ids}`).reverse(),
-            //type:"bubble",
-            //orientation:"h",
-            //ylabels: otu_ids,
-            //xlabels: sample_values,
             transform: "rotate(-90)"
         }];
 
@@ -132,8 +128,7 @@ function metadata(sampleid){
         var display = d3.select("#sample-metadata");
         display.html("");
         Object.entries(result).forEach(([key, value]) => {
-            var boldkey = key.bold();
-            display.append("h5").text(`${boldkey}: ${value}`);
+        display.append("h5").html(`<b>${key}</b>: ${value}`);
         })//end forEach
     })//end d3
 }//end function
@@ -168,6 +163,10 @@ function gauge(sampleid){
               { range: [7, 8], color: "rgba(0,128,128,.35)" },
               { range: [8, 9], color: "rgba(0,128,128,.40)" }
             ],//end steps
+            title: 'Auto-Resize',
+            font: {
+            size: 16
+            },
             threshold: {
               line: { color: "red", width: 4 },
               thickness: 0.75,
