@@ -21,23 +21,24 @@ var chartGroup = svg2.append("g")
   .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
 // Import Data
-d3.json("data/sample.json").then(function(data) {
-
+d3.json("data/samples.json").then(function(data) {
+    console.log(data)
     // Step 1: Parse Data/Cast as numbers
     // ==============================
-    data.forEach(function(data1) {
-      data1.sample = +data1.sample;
-     // data.otu_id = +data.num_hits;
-    });
+    // data.forEach(function(data1) {
+    //data.samples = +data1.samples;
+    //   data.otu_id = +data.num_hits;
+    //   data.otu_id = +data.num_hits;
+    // });
 
     // Step 2: Create scale functions
     // ==============================
     var xLinearScale = d3.scaleLinear()
-      .domain([20, d3.max(data, d => d.data)])
+      .domain([20, d3.max(data, d => d.samples)])
       .range([0, width]);
 
     var yLinearScale = d3.scaleLinear()
-      .domain([0, d3.max(data, d => d.sample)])
+      .domain([0, d3.max(data, d => d.samples)])
       .range([height, 0]);
 
     // Step 3: Create axis functions
@@ -60,7 +61,7 @@ d3.json("data/sample.json").then(function(data) {
     .data(data)
     .enter()
     .append("circle")
-    .attr("cx", d => xLinearScale(d.sample))
+    .attr("cx", d => xLinearScale(d.samples))
     .attr("r", "15")
     .attr("fill", "pink")
     .attr("opacity", ".5");
@@ -71,7 +72,7 @@ d3.json("data/sample.json").then(function(data) {
       .attr("class", "tooltip")
       .offset([80, -60])
       .html(function(d) {
-        return (`${d.rockband}<br>Hair length: ${d.hair_length}<br>Hits: ${d.num_hits}`);
+        return (`sample ${d.samples}<br>otu: ${d.otu_ids}`);
       });
 
     // Step 7: Create tooltip in the chart
