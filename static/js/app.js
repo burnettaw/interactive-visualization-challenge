@@ -49,16 +49,15 @@ found in that individual.
         }];
 
         var layout = {
-            title: "Belly Button Biodiversity",
-            xaxis: { title: "Sample Values" },
-            yaxis: { title: "OTU" }
+           // title: "Belly Button Biodiversity",
+            xaxis: { title: "<b>Sample Values<b>" },
+            yaxis: { title: "<b>OTU<b>" }
           };
     Plotly.newPlot("bar", data, layout);
     })
 }
 
 function optionChanged(id){
-
     metadata(id);
     createChart(id);
     createBubbles(id);
@@ -72,7 +71,7 @@ var margin = {
     right: 40,
     bottom: 60,
     left: 100
-};
+    };//end margin
 
 function createBubbles(sampleid){    
     d3.json("data/samples.json").then(function(data){
@@ -141,11 +140,10 @@ function metadata(sampleid){
 
 function gauge(sampleid){
     d3.json("data/samples.json").then(function(data){
-        console.log("in metadata")
-        console.log(data)
+       // console.log("in metadata")
+       // console.log(data)
         var metadata = data.metadata;
         var filterdata = metadata.filter(row => row.id == sampleid);
-
         var result = filterdata[0];
         var wfreq = result.wfreq;
         var data = [{
@@ -179,6 +177,10 @@ function gauge(sampleid){
         }]; //data
       
       var layout = {
+       // title: "Bellybutton Wash Frequency",//
+        title: { text: "Bellybutton Wash Frequency", font: { size: 24 } },
+       // yaxis: { title: "<b>Sample Values<b>" },
+        //xaxis: { title: "<b>OTU<b>" },
         width: 500,
         height: 500,
         margin: { t: 0, r: 0, l: 0, b: 0 },
