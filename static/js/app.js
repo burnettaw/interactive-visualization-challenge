@@ -89,9 +89,7 @@ Create a bubble scatter chart
         var otu_ids = result.otu_ids;
        // var otu_labels = filterdata[0].otu_labels;
         var otu_labels = result.otu_labels;
-       // var filterdata_otu_labels = samples.filter(row => row.id == sampleid);
-        //console.log("otu_labels");
-        //console.log(otu_labels);
+       
         marker_sizes = sample_values.slice(0, 10).reverse();
         var data = [{
             y:sample_values.slice(0, 10).reverse(), 
@@ -181,7 +179,7 @@ function gauge(sampleid){
         font: { color: "darkblue", family: "Arial" },
         title: { text: "Bellybutton Wash Frequency", font: { size: 24 }}
       
-      };
+      };//end layout
       
       Plotly.newPlot('gauge', data, layout);
     })//end d3
