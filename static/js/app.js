@@ -65,7 +65,7 @@ function optionChanged(id){
 }
    
 var svgWidth = 500;
-var svgHeight = 500;
+var svgHeight = 1500;
 var margin = {
     top: 20,
     right: 40,
@@ -95,7 +95,6 @@ Create a bubble scatter chart
         marker_sizes = sample_values.slice(0, 10).reverse();
         var data = [{
             y:sample_values.slice(0, 10).reverse(), 
-            //x:otu_ids.slice(0, 10).map(otu_ids => `OTU${otu_ids}`).reverse(),
             x:otu_ids.slice(0, 10).reverse(),
             mode: 'markers',
             marker: {
@@ -176,12 +175,9 @@ function gauge(sampleid){
         }]; //data
       
       var layout = {
-       // title: "Bellybutton Wash Frequency",//
-       // yaxis: { title: "<b>Sample Values<b>" },
-        //xaxis: { title: "<b>OTU<b>" },
         width: 500,
         height: 400,
-        margin: { t: 0, r: 0, l: 0, b: 0 },
+       // margin: { t: 0, r: 0, l: 0, b: 0 },
         font: { color: "darkblue", family: "Arial" },
         title: { text: "Bellybutton Wash Frequency", font: { size: 24 }}
       
